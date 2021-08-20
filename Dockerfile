@@ -1,7 +1,7 @@
 FROM jenkins/jenkins
 
 USER root
-RUN apt-get update && apt-get install -y procps
+RUN apt-get update && apt-get install -y procps lsb_release
 
 # Install Docker
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
