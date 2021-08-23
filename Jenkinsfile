@@ -16,7 +16,7 @@ pipeline {
     DOCKERHUB_USERNAME = "dprus"
     DOCKERHUB_REPO_NAME = "jenkins"
     DOCKERHUB_REPO_TAG = "latest"
-    JQ_DESCRIPTOR_QUERY_STRING = ".Descriptor | select (.platform.architecture==\"amd64\" and .platform.os==\"linux\")"
+    JQ_DESCRIPTOR_QUERY_STRING = ".[].Descriptor | select (.platform.architecture==\"amd64\" and .platform.os==\"linux\")"
   }
   
   stages {
