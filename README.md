@@ -12,3 +12,5 @@ The image is automatically rebuilt (checked every 4 hours):
 * Any time the upstream official Jenkins image is updated
 * At least once per week
 * Any time there is a check-in into this repo
+
+If you like this you can buy me a coffee: https://www.buymeacoffee.com/letri
