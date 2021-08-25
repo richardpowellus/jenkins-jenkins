@@ -11,6 +11,7 @@ pipeline {
   
   environment {
     DOCKERHUB_CREDENTIALS = credentials("dprus-dockerhub")
+    DOCKERHUB_CREDENTIALS_ACTUAL = credentials("dprus-dockerhub-actual")
     REBUILD_IMAGE = false
     UPSTREAM_IMAGE_NAME = "jenkins/jenkins"
     GITHUB_REPO = "richardpowellus/jenkins"
@@ -59,8 +60,8 @@ pipeline {
               // Update the README in Docker Hub
               sh('''
                 docker run --rm=true \
-                -e DOCKERHUB_USERNAME=${DOCKERHUB_CREDENTIALS_USR} \
-                -e DOCKERHUB_PASSWORD=${DOCKERHUB_CREDENTIALS_PSW} \
+                -e DOCKERHUB_USERNAME=${DOCKERHUB_CREDENTIALS_ACTUAL_USR} \
+                -e DOCKERHUB_PASSWORD=${DOCKERHUB_CREDENTIALS_ACTUAL_PSW} \
                 -e GIT_REPOSITORY=${GITHUB_REPO} \
                 -e DOCKER_REPOSITORY=${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME} \
                 -e GIT_BRANCH=${GITHUB_BRANCH} \
