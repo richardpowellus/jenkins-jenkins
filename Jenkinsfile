@@ -13,6 +13,8 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials("dprus-dockerhub")
     REBUILD_IMAGE = false
     UPSTREAM_IMAGE_NAME = "jenkins/jenkins"
+    GITHUB_REPO = "richardpowellus/jenkins"
+    GITHUB_BRANCH = "main"
     DOCKERHUB_USERNAME = "dprus"
     DOCKERHUB_REPO_NAME = "jenkins"
     DOCKERHUB_REPO_TAG = "latest"
@@ -54,6 +56,16 @@ pipeline {
             if (currentBuild.changeSets.size() > 0) {
              echo("There are changes in the git repository since the last build. Image will be rebuilt.")
               REBUILD_IMAGE = "true"
+              // Update the README in Docker Hub
+              sh('''
+                docker run --rm=true \
+                -e DOCKERHUB_USERNAME=${DOCKERHUB_CREDENTIALS_USR} \
+                -e DOCKERHUB_PASSWORD=${DOCKERHUB_CREDENTIALS_PSW} \
+                -e GIT_REPOSITORY=${GITHUB_REPO} \
+                -e DOCKER_REPOSITORY=${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME} \
+                -e GIT_BRANCH=${GITHUB_BRANCH} \
+                lsiodev/readme-sync bash -c 'node sync'
+             ''')
             }
             else {
               echo("There are NO changes in the git repository since the last build. This will not trigger an image rebuild.")
