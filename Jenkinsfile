@@ -60,8 +60,8 @@ pipeline {
               // Update the README in Docker Hub
               sh('''
                 docker run --rm=true \
-                -e DOCKERHUB_USERNAME=${DOCKERHUB_CREDENTIALS_ACTUAL_USR} \
-                -e DOCKERHUB_PASSWORD=${DOCKERHUB_CREDENTIALS_ACTUAL_PSW} \
+                -e DOCKERHUB_USERNAME=$DOCKERHUB_CREDENTIALS_ACTUAL_USR \
+                -e DOCKERHUB_PASSWORD=$DOCKERHUB_CREDENTIALS_ACTUAL_PSW \
                 -e GIT_REPOSITORY=${GITHUB_REPO} \
                 -e DOCKER_REPOSITORY=${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME} \
                 -e GIT_BRANCH=${GITHUB_BRANCH} \
