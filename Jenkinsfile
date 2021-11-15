@@ -13,7 +13,7 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials("dprus-dockerhub")
     DOCKERHUB_CREDENTIALS_ACTUAL = credentials("dprus-dockerhub-actual")
     REBUILD_IMAGE = false
-    UPSTREAM_IMAGE_NAME = "jenkins/jenkins"
+    UPSTREAM_IMAGE_NAME = "jenkins/jenkins:latest"
     GITHUB_REPO = "richardpowellus/jenkins"
     GITHUB_BRANCH = "main"
     DOCKERHUB_USERNAME = "dprus"
