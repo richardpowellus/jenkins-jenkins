@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:latest
+FROM jenkins/jenkins:jdk11
 
 USER root
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y procps lsb-release jq
