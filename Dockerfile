@@ -11,7 +11,7 @@ RUN echo \
 RUN apt update && apt install -y docker-ce docker-ce-cli
 
 # Intall jq
-RUN apt install jq
+RUN apt install -y jq
 
 # Clean up
 RUN apt --purge autoremove && sudo apt clean
