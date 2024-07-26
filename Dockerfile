@@ -14,6 +14,6 @@ RUN apt update && apt install -y docker-ce docker-ce-cli
 RUN apt install -y jq
 
 # Clean up
-RUN apt --purge autoremove && sudo apt clean
+RUN apt --purge autoremove && apt clean
 
 USER jenkins
